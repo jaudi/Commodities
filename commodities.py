@@ -1,6 +1,5 @@
 import streamlit as st
 import yfinance as yf
-import matplotlib.pyplot as plt
 import pandas as pd
 
 # Set up the Streamlit page
@@ -16,26 +15,31 @@ commodities = {
     'Soybeans': 'ZS=F',
     'Wheat': 'ZW=F'
 }
-periods=['1d', '5d', '1mo', '3mo', '6mo', '1y', '5y', '10y', 'ytd', 'max']
+
+# List of periods for user to choose
+periods = ['1d', '5d', '1mo', '3mo', '6mo', '1y', '5y', '10y', 'ytd', 'max']
 
 # Allow user to select which commodities to display
 selected_commodities = st.multiselect('Select commodities to display', list(commodities.keys()), default=list(commodities.keys()))
-selected_period=st.selectbox("Select period",periods,index=2)
+
+# Allow user to select a time period
+selected_period = st.selectbox("Select period", periods, index=2)  # Default is '1mo'
+
 # Function to fetch data from yfinance
-def fetch_data(ticker):
-    data = yf.download(ticker, period, interval='1d')
+def fetch_data(ticker, period):
+    data = yf.download(ticker, period=period, interval='1d')  # Pass the selected period correctly
     return data
 
 # Fetch data for the selected commodities
 commodity_data = {}
 for commodity in selected_commodities:
     ticker = commodities[commodity]
-    data = fetch_data(ticker,selected_period)
+    data = fetch_data(ticker, selected_period)  # Use the selected period here
     commodity_data[commodity] = data
 
 # Plot the data for each selected commodity
 for commodity, data in commodity_data.items():
-    st.subheader(f'{commodity} Prices (Last 1 Month)')
+    st.subheader(f'{commodity} Prices ({selected_period})')
     st.line_chart(data['Close'])
 
 # Option to download the data
