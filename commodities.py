@@ -21,7 +21,7 @@ periods = ['1d', '5d', '1mo', '3mo', '6mo', '1y', '5y', '10y', 'ytd', 'max']
 selected_commodities = st.multiselect('Select commodities to display', list(commodities.keys()), default=list(commodities.keys()))
 
 # Allow user to select a time period
-selected_period = st.selectbox("Select period", periods, index=2)  # Default is '1mo'
+selected_period = st.selectbox("Select period", periods, index=6)  # 
 
 # Function to fetch data from yfinance
 def fetch_data(ticker, period):
