@@ -1,4 +1,5 @@
-streamliy
+
+streamlit
 yfinance
 pandas
 matploylib
