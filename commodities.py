@@ -11,9 +11,7 @@ commodities = {
     'Silver': 'SI=F',
     'Crude Oil': 'CL=F',
     'Natural Gas': 'NG=F',
-    'Corn': 'ZC=F',
-    'Soybeans': 'ZS=F',
-    'Wheat': 'ZW=F'
+    
 }
 
 # List of periods for user to choose
