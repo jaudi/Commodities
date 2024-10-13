@@ -25,7 +25,7 @@ selected_period = st.selectbox("Select period", periods, index=6)  #
 
 # Function to fetch data from yfinance
 def fetch_data(ticker, period):
-    data = yf.download(ticker, period=period, interval='1d')  # Pass the selected period correctly
+    data = yf.download(ticker, period=period)  # Pass the selected period correctly
     return data
 
 # Fetch data for the selected commodities
