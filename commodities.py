@@ -15,7 +15,7 @@ commodities = {
 }
 
 # List of periods for user to choose
-periods = ['1d', '5d', '1mo', '3mo', '6mo', '1y', '5y', '10y', 'ytd', 'max']
+periods = [ '5d', '1mo', '3mo', '6mo', '1y', '5y', '10y', 'ytd', 'max']
 
 # Allow user to select which commodities to display
 selected_commodities = st.multiselect('Select commodities to display', list(commodities.keys()), default=list(commodities.keys()))
@@ -25,7 +25,7 @@ selected_period = st.selectbox("Select period", periods, index=6)  #
 
 # Function to fetch data from yfinance
 def fetch_data(ticker, period):
-    data = yf.download(ticker, period=period)  # Pass the selected period correctly
+    data = yf.download(ticker, period=period,interval='1d')  # Pass the selected period correctly
     return data
 
 # Fetch data for the selected commodities
